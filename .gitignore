@@ -130,3 +130,6 @@ dmypy.json
 
 # LOCAL SETTINGS (RDH)
 local_settings.py
+
+# Vagrant (RDH)
+.vagrant
