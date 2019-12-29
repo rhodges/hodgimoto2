@@ -19,7 +19,7 @@ cd hodgimoto2
 
 ### Set Up Venv & Install Django/Requirements
 ```
-sudo apt install python3-venv
+sudo apt install python3-venv python3-dev build-essential
 cd /usr/local/apps/hodgimoto2/
 python3 -m venv env
 source env/bin/activate
@@ -79,4 +79,23 @@ sudo service postgresql restart
 ```
 python /usr/local/apps/hodgimoto2/manage.py migrate
 ```
- 
+
+### Install and configure NGINX and uWSGI
+**NGINX**
+```
+sudo apt-get install nginx -y
+sudo cp /usr/local/apps/hodgimoto2/deploy/nginx.conf /etc/nginx/sites-available/hodgimoto
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/hodgimoto /etc/nginx/sites-enabled/hodgimoto
+```
+**uWSGI**
+```
+sudo apt install uwsgi uwsgi-plugin-python3
+pip3 install uwsgi
+sudo cp /usr/local/apps/hodgimoto2/deploy/emperor.ini /etc/uwsgi/
+sudo ln -s /usr/local/apps/hodgimoto2/deploy/uwsgi.service /etc/systemd/system/
+sudo ln -s /usr/local/apps/hodgimoto2/deploy/hodgimoto.ini /etc/uwsgi/apps-enabled/
+sudo service uwsgi start
+sudo service uwsgi restart
+sudo systemctl enable uwsgi.service
+```
