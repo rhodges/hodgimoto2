@@ -27,6 +27,12 @@ python -m pip install --upgrade pip
 pip install -r ./requirements.txt
 ```
 
+### Initialize Django Configuration
+```
+cd /usr/local/apps/hodgimoto2/hodgimoto
+cp template_local_settings.py local_settings.py
+```
+
 ### Install PostgreSQL and PostGIS
 Below you will create a username and password for a database user, seen in the commands below as {DBUSER}.
 For development installs you can skip this user-creation step and leave the `-O {DBUSER}` out of the createdb command.
@@ -38,9 +44,19 @@ sudo -u postgres psql -c "CREATE EXTENSION postgis; CREATE EXTENSION postgis_top
 sudo vim /etc/postgresql/10/main/pg_hba.conf
 ```
 **IF PRODUCTION INSTALL**:
-If you created a {DBUSER} and assigned them as the DB owner (as above) then update pg_hba.conf 'Authentication' section as follows:
+If you created a {DBUSER} and assigned them as the DB owner (as above) then update pg_hba.conf 'Authentication' section as follows (add the `local  hodgimoto     {DBUSER}....` line:
 ```
-host    hodgimoto           {DBUSER}                                md5
+...
+# Database administrative login by Unix domain socket
+local   all             postgres                                peer
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   hodgimoto       {DBUSER}                                md5
+local   all             all                                     peer
+# IPv4 local connections:
+...
 ```
 Also update `/usr/local/apps/hodgimoto2/hodgimoto/local_settings.py` in the `DATABASES` section:
 ```
@@ -59,10 +75,8 @@ Restart postgreSQL.
 sudo service postgresql restart
 ```
 
-### Configure Django and perform initial DB Migration
+### Perform Initial DB Migration
 ```
-cd /usr/local/apps/hodgimoto2/hodgimoto
-cp template_local_settings.py local_settings.py
 python /usr/local/apps/hodgimoto2/manage.py migrate
 ```
  
