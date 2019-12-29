@@ -133,3 +133,6 @@ local_settings.py
 
 # Vagrant (RDH)
 .vagrant
+
+# Django Stuff
+static/
