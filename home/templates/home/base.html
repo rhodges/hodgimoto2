@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+  <head>
+    {% block head %}
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+      {% block additional_head %}
+      {% endblock %} <!-- additional_head -->
+    {% endblock %} <!-- head -->
+  </head>
+  <body>
+    {% block header %}
+      {% include "home/header.html" %}
+    {% endblock %} <!-- header -->
+
+    {% block content %}
+    {% endblock %} <!-- content -->
+
+  </body>
+</html>

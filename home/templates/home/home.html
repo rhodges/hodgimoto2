@@ -1,13 +1,22 @@
-<html>
-<body>
-  <h1>Hodgimoto.com</h1>
-  <p>Your favorite web site.</p>
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block additional_head %}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock %} <!-- additional_head -->
+
+{% block content %}
+  <div class="homesection">
+    <h2>Most recent <a href="/blog">blog</a> posts</h2>
+    {% for post in latest_blog_posts %}
+      {% include "blog/post_blurb.html" %}
+    {% endfor %}
+  </div>
 
   <b>Coming soon!</b>
   <ul>
-    <li>Blog</li>
+    <li><strike>Blog</strike></li>
     <li>Maps</li>
     <li>Testing</li>
   </ul>
-</body>
-</html>
+{% endblock %} <!-- content -->

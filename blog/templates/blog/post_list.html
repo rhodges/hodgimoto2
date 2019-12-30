@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block head %}
+  <title>Hodgimoto Blog</title>
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock %} <!-- head -->
+
+{% block content %}
+    <h1><a href="/blog/">Hodgimoto Blog</a></h1>
+
+    {% for post in posts %}
+        {% include "blog/post_blurb.html" %}
+    {% endfor %}
+    <div class='topicideas'>
+      <h3>Ideas for future posts and research:</h3>
+      <ul>
+        <li>Testing in Django</li>
+        <li>Installing RetroPie on a Raspberry Pi 4</li>
+        <li>Pushing content from home server to private online image viewer</li>
+        <li>Hacking MediaWiki</li>
+        <li>Adding Rich Text Fields to Django TextArea Fields (Django Girls blog tutorial)</li>
+      </ul>
+    </div>
+{% endblock content %}

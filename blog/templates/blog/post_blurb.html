@@ -1,0 +1,5 @@
+<div class="blogpost well">
+    <h2><a href="/blog/page/{{post.pk}}/">{{ post.title }}</a></h2>
+    <p>published: {{ post.published_date }}</p>
+    <p>{{ post.text|safe }}</p>
+</div>
