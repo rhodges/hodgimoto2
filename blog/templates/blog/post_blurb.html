@@ -1,5 +1,7 @@
-<div class="blogpost well">
-    <h2><a href="/blog/page/{{post.pk}}/">{{ post.title }}</a></h2>
+<a href="/blog/page/{{post.pk}}/">
+  <div class="blogpost">
+    <h2>{{ post.title }}</h2>
     <p>published: {{ post.published_date }}</p>
-    <p>{{ post.text|safe }}</p>
-</div>
+    <div class="postblurb">{{ post.text|striptags }}</div>
+  </div>
+</a>

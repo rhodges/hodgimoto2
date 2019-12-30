@@ -1,3 +1,25 @@
-.blogpost {
-  margin: 1rem 3rem;
+div.blogpost {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  /* background-image: linear-gradient(to bottom, #e8e8e8 #f5f5f5 100%); */
+  color: black;
+  background-image: linear-gradient(to bottom,#e8e8e8 0,#f5f5f5 50%,#e8e8e8 100%);
+  border: 2px solid #DCDCDC;
+  /* margin-bottom: 0; */
+  border-radius: 0.7rem;
+}
+div.blogpost:hover  {
+  color: black;
+  background-image: linear-gradient(to bottom,#f5f5f5 0,#d8d8d8 50%,#f5f5f5 100%);
+  text-decoration: none;
+  border: 2px solid #2a6496;
+}
+
+div.blogpost h2 {
+  margin-top: 0;
+}
+
+.postblurb {
+  max-height: 50px;
+  overflow: hidden;
 }

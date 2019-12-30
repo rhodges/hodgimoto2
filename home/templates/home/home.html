@@ -6,17 +6,22 @@
 {% endblock %} <!-- additional_head -->
 
 {% block content %}
-  <div class="homesection">
-    <h2>Most recent <a href="/blog">blog</a> posts</h2>
-    {% for post in latest_blog_posts %}
-      {% include "blog/post_blurb.html" %}
-    {% endfor %}
-  </div>
+  <div id="homecontent">
 
-  <b>Coming soon!</b>
-  <ul>
-    <li><strike>Blog</strike></li>
-    <li>Maps</li>
-    <li>Testing</li>
-  </ul>
+    <div class="homesection">
+      <h2>Most recent <a href="/blog">blog</a> posts</h2>
+      {% for post in latest_blog_posts %}
+        {% include "blog/post_blurb.html" %}
+      {% endfor %}
+    </div>
+
+    <div class="homesection">
+      <b>Coming soon!</b>
+      <ul>
+        <li><strike>Blog</strike></li>
+        <li>Maps</li>
+        <li>Testing</li>
+      </ul>
+    </div>
+  </div>
 {% endblock %} <!-- content -->
